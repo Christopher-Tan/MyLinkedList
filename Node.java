@@ -1,9 +1,10 @@
 public class Node {
+    private Node next, prev;
+    private String data;
+    
     public Node(String value) {
         data = value;
     }
-    private String data;
-    private Node next, prev;
     
     //SET METHODS
     public void setData(String value) {

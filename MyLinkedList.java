@@ -10,9 +10,13 @@ public class MyLinkedList {
         return size;
     }
     public boolean add(String value) {
+        this.add(size,value);
         return true;
     }
-    public void add(int index, String value) {
+    public void add(int index, String value) throws IndexOutOfBoundsException {
+        if (index > size || index < 0) {
+            throw new IndexOutOfBoundsException("cannot set indices outside of the list");
+        }
         if (size == 0) {
             Node temp = new Node(value);
             start = temp;
@@ -28,15 +32,16 @@ public class MyLinkedList {
             temp.setPrev(end);
             end = temp;
         } else {
-            Node current = start;
+            Node currentleft = start;
             for (int i = 0; i < index - 1; i++) {
-                current = current.getNext();
+                currentleft = currentleft.getNext();
             }
+            Node currentright = currentleft.getNext();
             Node temp = new Node(value);
-            temp.setPrev(current);
-            temp.setNext(current.getNext());
-            current.setNext(temp);
-            current.getNext().setPrev(temp);
+            temp.setPrev(currentleft);
+            temp.setNext(currentright);
+            currentleft.setNext(temp);
+            currentright.setPrev(temp);
         }
         size++;
     }
