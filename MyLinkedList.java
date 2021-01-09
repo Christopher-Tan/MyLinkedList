@@ -68,12 +68,27 @@ public class MyLinkedList {
         return temp;
     }
     public String toString() {
-        String result = "";
+        String result = "[";
         Node current = start;
-        for (int i = 0; i < size(); i++) {
-            result += current.getData();
+        for (int i = 0; i < size() - 1; i++) {
+            result += (current.getData() + ", ");
             current = current.getNext();
         }
-        return result;
+        if (size > 0) {
+            result += end.getData();
+        }
+        return (result + "]");
+    }
+    public String toStringReversed() {
+        String result = "[";
+        Node current = end;
+        for (int i = 0; i < size() - 1; i++) {
+            result += (current.getData() + ", ");
+            current = current.getPrev();
+        }
+        if (size > 0) {
+            result += start.getData();
+        }
+        return (result + "]");
     }
 }

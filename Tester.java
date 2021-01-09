@@ -36,5 +36,12 @@ public class Tester {
         }
         System.out.println("");
         System.out.println(tester);
+        System.out.println(tester.toStringReversed());
+        System.out.println(new MyLinkedList());
+        System.out.println(new MyLinkedList().toStringReversed());
+        MyLinkedList oneelement = new MyLinkedList();
+        oneelement.add("1");
+        System.out.println(oneelement);
+        System.out.println(oneelement.toStringReversed());
     }
 }
