@@ -34,5 +34,7 @@ public class Tester {
         for (int i = 0; i < tester.size(); i++) {
             System.out.print(tester.get(i));
         }
+        System.out.println("");
+        System.out.println(tester);
     }
 }

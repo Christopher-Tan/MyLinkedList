@@ -68,6 +68,12 @@ public class MyLinkedList {
         return temp;
     }
     public String toString() {
-        return "";
+        String result = "";
+        Node current = start;
+        for (int i = 0; i < size(); i++) {
+            result += current.getData();
+            current = current.getNext();
+        }
+        return result;
     }
 }
