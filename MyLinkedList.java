@@ -14,8 +14,8 @@ public class MyLinkedList {
         return true;
     }
     public void add(int index, String value) throws IndexOutOfBoundsException {
-        if (index > size || index < 0) {
-            throw new IndexOutOfBoundsException("cannot set indices outside of the list");
+        if (index > size() || index < 0) {
+            throw new IndexOutOfBoundsException("cannot change indices outside of the list");
         }
         if (size == 0) {
             Node temp = new Node(value);
@@ -32,24 +32,40 @@ public class MyLinkedList {
             temp.setPrev(end);
             end = temp;
         } else {
-            Node currentleft = start;
+            Node current = start;
             for (int i = 0; i < index - 1; i++) {
-                currentleft = currentleft.getNext();
+                current = current.getNext();
             }
-            Node currentright = currentleft.getNext();
+            Node next = current.getNext();
             Node temp = new Node(value);
-            temp.setPrev(currentleft);
-            temp.setNext(currentright);
-            currentleft.setNext(temp);
-            currentright.setPrev(temp);
+            temp.setPrev(current);
+            temp.setNext(next);
+            current.setNext(temp);
+            next.setPrev(temp);
         }
         size++;
     }
-    public String get(int index) {
-        return "";
+    public String get(int index) throws IndexOutOfBoundsException {
+        if (index >= size() || index < 0) {
+            throw new IndexOutOfBoundsException("cannot get indices outside of the list");
+        }
+        Node current = start;
+        for (int i = 0; i < index; i++) {
+            current = current.getNext();
+        }
+        return current.getData();
     }
-    public String set(int index, String value) {
-        return "";
+    public String set(int index, String value) throws IndexOutOfBoundsException {
+        if (index >= size() || index < 0) {
+            throw new IndexOutOfBoundsException("cannot change indices outside of the list");
+        }
+        Node current = start;
+        for (int i = 0; i < index; i++) {
+            current = current.getNext();
+        }
+        String temp = current.getData();
+        current.setData(value);
+        return temp;
     }
     public String toString() {
         return "";
