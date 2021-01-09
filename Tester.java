@@ -43,5 +43,18 @@ public class Tester {
         oneelement.add("1");
         System.out.println(oneelement);
         System.out.println(oneelement.toStringReversed());
+
+        System.out.println(tester.remove(2));
+        System.out.println(tester);
+        System.out.println(tester.remove(2));
+        System.out.println(tester);
+        System.out.println(tester.remove(0));
+        System.out.println(tester);
+        System.out.println(tester.remove(tester.size()-1));
+        System.out.println(tester);
+        System.out.println(tester.remove(0));
+        System.out.println(tester);
+        System.out.println(tester.remove(0));
+        System.out.println(tester);
     }
 }

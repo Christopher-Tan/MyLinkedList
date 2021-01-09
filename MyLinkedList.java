@@ -10,14 +10,14 @@ public class MyLinkedList {
         return size;
     }
     public boolean add(String value) {
-        this.add(size,value);
+        this.add(size(),value);
         return true;
     }
     public void add(int index, String value) throws IndexOutOfBoundsException {
         if (index > size() || index < 0) {
             throw new IndexOutOfBoundsException("cannot change indices outside of the list");
         }
-        if (size == 0) {
+        if (size() == 0) {
             Node temp = new Node(value);
             start = temp;
             end = temp;
@@ -26,7 +26,7 @@ public class MyLinkedList {
             start.setPrev(temp);
             temp.setNext(start);
             start = temp;
-        } else if (index == size) {
+        } else if (index == size()) {
             Node temp = new Node(value);
             end.setNext(temp);
             temp.setPrev(end);
@@ -74,7 +74,7 @@ public class MyLinkedList {
             result += (current.getData() + ", ");
             current = current.getNext();
         }
-        if (size > 0) {
+        if (size() > 0) {
             result += end.getData();
         }
         return (result + "]");
@@ -86,9 +86,41 @@ public class MyLinkedList {
             result += (current.getData() + ", ");
             current = current.getPrev();
         }
-        if (size > 0) {
+        if (size() > 0) {
             result += start.getData();
         }
         return (result + "]");
+    }
+    public String remove(int index) throws IndexOutOfBoundsException {
+        if (index >= size() || index < 0) {
+            throw new IndexOutOfBoundsException("cannot change indices outside of the list");
+        }
+        String result = "";
+        if (size() == 1) {
+            result = start.getData();
+            start = null;
+            end = null;
+        } else if (index == 0) {
+            result = start.getData();
+            start = start.getNext();
+            start.setPrev(null);
+        } else if (index == size() - 1) {
+            result = end.getData();
+            end = end.getPrev();
+            end.setNext(null);
+        } else {
+            Node current = start;
+            for (int i = 0; i < index; i++) {
+                current = current.getNext();
+            }
+            Node last = current.getPrev();
+            Node next = current.getNext();
+            result = current.getData();
+            last.setNext(next);
+            next.setPrev(last);
+            
+        }
+        size--;
+        return result;
     }
 }
