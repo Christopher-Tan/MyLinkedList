@@ -56,5 +56,62 @@ public class Tester {
         System.out.println(tester);
         System.out.println(tester.remove(0));
         System.out.println(tester);
+
+        MyLinkedList list1 = new MyLinkedList();
+        list1.add("1");
+        list1.add("2");
+        list1.add("3");
+        list1.add("4");
+        list1.add("5");
+        list1.add("6");
+        list1.set(2,"-");
+        list1.set(3,"+");
+        System.out.println(list1);
+        MyLinkedList list2 = new MyLinkedList();
+        list2.add("1");
+        list2.add("2");
+        list2.add("3");
+        list2.add("4");
+        list2.add("5");
+        list2.add("6");
+        list2.set(2,"-");
+        list2.set(3,"+");
+        System.out.println(list2);
+        list1.extend(list2);
+        System.out.print(list1);
+        System.out.println(list1.size());
+        System.out.print(list2);
+        System.out.println(list2.size());
+        list1.extend(list2);
+        System.out.println(list1);
+        System.out.println(list2);
+        System.out.println(list1.size());
+        System.out.println(list2.size());
+        list2.extend(list1);
+        System.out.println(list1);
+        System.out.println(list2);
+        System.out.println(list1.size());
+        System.out.println(list2.size());
+        for (int i = 0; i < 12; i++) {
+            list2.remove(0);
+        }
+        System.out.println(list1);
+        System.out.println(list2);
+        list1.extend(list2);
+        System.out.print(list1);
+        System.out.println(list1.size());
+        System.out.print(list2);
+        System.out.println(list2.size());
+        list1.add("Hi");
+        list1.extend(list2);
+        System.out.println(list1);
+        System.out.println(list2);
+        list2.extend(list1);
+        System.out.println(list1);
+        System.out.println(list2);
+        list1.add("Hi");
+        list1.extend(list2);
+        System.out.println(list1);
+        System.out.println(list2);
     }
 }

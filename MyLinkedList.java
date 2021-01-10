@@ -123,4 +123,18 @@ public class MyLinkedList {
         size--;
         return result;
     }
+    public void extend(MyLinkedList other) {
+        if (this.size() > 0 && other.size() > 0) {
+            this.end.setNext(other.start);
+            other.start.setPrev(this.end);
+            this.end = other.end;
+            this.size += other.size;
+        }
+        if (this.size() == 0) {
+            this.start = other.start;
+            this.end = other.end;
+            this.size = other.size;
+        }
+        other.start = null; other.end = null; other.size = 0;
+    }
 }
